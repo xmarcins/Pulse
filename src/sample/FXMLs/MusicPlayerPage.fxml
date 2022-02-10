@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.PlayerController">
+    <bottom>
+      <AnchorPane maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: #293245;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="songLengthLabel" layoutX="1142.0" layoutY="50.0" prefHeight="20.0" prefWidth="40.0" text="00:00" textAlignment="CENTER" textFill="#6dd475">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label fx:id="actualTimeLabel" layoutX="230.0" layoutY="50.0" prefHeight="20.0" prefWidth="40.0" text="00:00" textAlignment="CENTER" textFill="#6dd475">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <JFXSlider id="volume" fx:id="volumeSlider" layoutX="1221.0" layoutY="9.0" prefHeight="81.0" prefWidth="14.0" stylesheets="@../Styles/slider.css" AnchorPane.bottomAnchor="9.400000000000006" AnchorPane.leftAnchor="1221.0" AnchorPane.rightAnchor="44.59999999999991" AnchorPane.topAnchor="9.0" />
+                <JFXSlider fx:id="timeSlider" layoutX="302.0" layoutY="50.0" prefHeight="20.0" prefWidth="780.0" stylesheets="@../Styles/slider.css" />
+            <ImageView fx:id="playPause" fitHeight="26.0" fitWidth="26.0" layoutX="649.0" layoutY="24.0" onMouseClicked="#playAndPause" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/play.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="stop" fitHeight="26.0" fitWidth="26.0" layoutX="710.0" layoutY="24.0" onMouseClicked="#stop" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/stop.png" />
+               </image>
+            </ImageView>
+            <AnchorPane maxWidth="200.0" minWidth="200.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffd55a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                      <Label fx:id="songNameLabel" alignment="CENTER" layoutX="29.0" layoutY="36.0" prefHeight="42.0" prefWidth="141.0" text="Song name" textAlignment="CENTER" textFill="#293245" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+    </bottom>
+    <top>
+      <AnchorPane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: #293250;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffd55a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="75.0" layoutY="25.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/logout.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="77.0" prefHeight="18.0" prefWidth="57.0" text="Logout" textFill="#293245" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="75.4">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="978.0" maxHeight="100.0" maxWidth="300.0" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXTextField fx:id="searchField" focusColor="#6dd475" layoutX="10.0" layoutY="32.0" maxHeight="35.0" maxWidth="280.0" minHeight="35.0" minWidth="280.0" prefHeight="35.0" prefWidth="280.0" promptText="Search" stylesheets="@../Styles/textview.css" unFocusColor="#6dd475" AnchorPane.bottomAnchor="32.8" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="32.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+    </top>
+   <left>
+      <AnchorPane maxWidth="200.0" minWidth="200.0" prefHeight="520.0" prefWidth="200.0" style="-fx-background-color: #ffd55a;" BorderPane.alignment="BOTTOM_LEFT">
+         <children>
+            <JFXButton layoutX="50.0" layoutY="250.0" onAction="#loadSongs" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #293245;" text="Songs" textFill="#ffd55a" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></JFXButton>
+            <JFXButton layoutY="300.0" onAction="#loadAlbums" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #293245;" text="Albums" textFill="#ffd55a" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="49.0">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></JFXButton>
+            <JFXButton layoutX="50.0" layoutY="350.0" onAction="#loadArtists" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #293245;" text="Artists" textFill="#ffd55a" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></JFXButton>
+            <JFXButton layoutX="50.0" layoutY="400.0" onMouseClicked="#loadFavourites" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #293245#293245;" text="Favorites" textFill="#ffd55a" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></JFXButton>
+            <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="35.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="35.0">
+               <image>
+                  <Image url="@../Images/userBlue.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="showUserName" alignment="CENTER" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" text="UserName" textFill="#293245">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane style="-fx-background-color: #293250;" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="albumsListView" prefHeight="520.0" prefWidth="1080.0" stylesheets="@../Styles/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ListView>
+            <ListView fx:id="artistListView" prefHeight="533.0" prefWidth="1080.0" stylesheets="@../Styles/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ListView>
+            <ListView fx:id="songsListView" prefHeight="520.0" prefWidth="1080.0" stylesheets="@../Styles/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ListView>
+            <AnchorPane fx:id="songPane" maxHeight="533.0" maxWidth="1080.0" minHeight="520.0" minWidth="1080.0" prefHeight="533.0" prefWidth="1080.0" style="-fx-background-color: #293250;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <ListView id="list" fx:id="songReviewsListView" layoutX="780.0" maxHeight="473.0" maxWidth="300.0" minHeight="473.0" minWidth="300.0" prefHeight="473.0" prefWidth="300.0" stylesheets="@../Styles/listview.css" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label fx:id="lyricsText" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" maxHeight="533.0" maxWidth="780.0" minHeight="400.0" minWidth="780.0" mouseTransparent="true" prefHeight="533.0" prefWidth="780.0" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold Italic" size="35.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="50.0" right="50.0" />
+                     </padding>
+                  </Label>
+                  <AnchorPane layoutX="780.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #293250;" AnchorPane.bottomAnchor="99.60000000000002" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutX="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="154.0">
+                           <children>
+                              <ImageView fx:id="star1" fitHeight="30.0" fitWidth="30.0" layoutY="9.0" onMouseClicked="#starClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/starUnfilled.png" />
+                                 </image></ImageView>
+                              <ImageView fx:id="star2" fitHeight="30.0" fitWidth="30.0" layoutX="30.0" layoutY="9.0" onMouseClicked="#starClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/starUnfilled.png" />
+                                 </image></ImageView>
+                              <ImageView fx:id="star3" fitHeight="30.0" fitWidth="30.0" layoutX="60.0" layoutY="9.0" onMouseClicked="#starClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/starUnfilled.png" />
+                                 </image></ImageView>
+                              <ImageView fx:id="star4" fitHeight="30.0" fitWidth="30.0" layoutX="90.0" layoutY="9.0" onMouseClicked="#starClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/starUnfilled.png" />
+                                 </image></ImageView>
+                              <ImageView fx:id="star5" fitHeight="30.0" fitWidth="30.0" layoutX="120.0" layoutY="9.0" onMouseClicked="#starClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/starUnfilled.png" />
+                                 </image></ImageView>
+                           </children>
+                        </AnchorPane>
+                        <JFXButton layoutX="176.0" layoutY="9.0" onMouseClicked="#submitReview" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #6dd475;" text="Submit review" textFill="#293245">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font></JFXButton>
+                     </children>
+                  </AnchorPane>
+                  <JFXTextArea fx:id="reviewText" focusColor="#6dd475" layoutX="780.0" layoutY="428.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="300.0" style="-fx-text-fill: #6dd475; -fx-background-color: #2932;" unFocusColor="#6dd475" AnchorPane.bottomAnchor="7.2000000000000455" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
